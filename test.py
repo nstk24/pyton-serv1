@@ -10,12 +10,12 @@ def home():
 def data():
     return jsonify({"message": "Hello from the server"})
 
-@app.route('/send', methods = ['POST'])
+@app.route('/send', methods=['POST'])
 def send():
     data = request.json
     message = data.get('message')
-    return jsonify({"response": f"Message recieved: {message}"})
-    
+    return jsonify({"response": f"Message received: {message}"})
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # Указываем пути к сертификату и ключу
+    app.run(ssl_context=('cert.pem', 'key.pem'), host='127.0.0.1', port=5000)
